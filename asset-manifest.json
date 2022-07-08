@@ -1,32 +1,32 @@
 {
   "files": {
     "main.css": "/static/css/main.6b3ed257.css",
-    "main.js": "/static/js/main.0dde98d4.js",
+    "main.js": "/static/js/main.541695d6.js",
     "static/js/937.cc77dee8.chunk.js": "/static/js/937.cc77dee8.chunk.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
-    "static/media/aurora.png": "/static/media/aurora.9fbb7a915e24c5d64841.png",
-    "static/media/filmes.png": "/static/media/filmes.040b8ac426adc0a3a228.png",
-    "static/media/tr.png": "/static/media/tr.03daf76eee3fd725d028.png",
-    "static/media/business.png": "/static/media/business.8387e355cf7e5d44ea5b.png",
-    "static/media/folha.png": "/static/media/folha.0b7ad3815d4c4432faf5.png",
-    "static/media/dentist.png": "/static/media/dentist.b99cd9f4673efcc491ea.png",
-    "static/media/marketing.png": "/static/media/marketing.f0cf093d61378f4e9d88.png",
-    "static/media/carstore.png": "/static/media/carstore.8fac2e825054615cc0ca.png",
-    "static/media/website.png": "/static/media/website.aef77f06423894d15ea9.png",
-    "static/media/pokedex.png": "/static/media/pokedex.c04fd4d96bc6e1301d9e.png",
-    "static/media/face.png": "/static/media/face.03bba05bc9eaee40c590.png",
-    "static/media/qsn.png": "/static/media/qsn.bf6174108029bb00f27b.png",
+    "static/media/pokedex.webp": "/static/media/pokedex.6437a813a6d3e343d2e1.webp",
     "static/media/profile.webp": "/static/media/profile.dd059c7677417f163896.webp",
-    "static/media/notes.png": "/static/media/notes.3f9b95390cbc8335f57a.png",
+    "static/media/filmes.webp": "/static/media/filmes.5302874850817b491ee7.webp",
+    "static/media/aurora.webp": "/static/media/aurora.4d829c76c30623cfa91c.webp",
+    "static/media/marketing.webp": "/static/media/marketing.696a739941a594dd36da.webp",
+    "static/media/dentist.webp": "/static/media/dentist.5aa84bc8a62eac84364c.webp",
+    "static/media/tr.webp": "/static/media/tr.17af70af0e2b9366aef4.webp",
+    "static/media/folha.webp": "/static/media/folha.fdf85f1f99f57218e3ab.webp",
+    "static/media/business.webp": "/static/media/business.f173edcbf1c07c7b60c1.webp",
+    "static/media/carstore.webp": "/static/media/carstore.d5a8b269596e17740a49.webp",
+    "static/media/website.webp": "/static/media/website.6283012b865d5cf64fed.webp",
     "static/media/construcao.webp": "/static/media/construcao.f91d763b276797759fa2.webp",
+    "static/media/face.webp": "/static/media/face.810c02b26e6d6d45a96d.webp",
+    "static/media/qsn.webp": "/static/media/qsn.4f23801f288a6bf97633.webp",
+    "static/media/notes.webp": "/static/media/notes.29e90223dabe1877413e.webp",
     "index.html": "/index.html",
     "main.6b3ed257.css.map": "/static/css/main.6b3ed257.css.map",
-    "main.0dde98d4.js.map": "/static/js/main.0dde98d4.js.map",
+    "main.541695d6.js.map": "/static/js/main.541695d6.js.map",
     "937.cc77dee8.chunk.js.map": "/static/js/937.cc77dee8.chunk.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b3ed257.css",
-    "static/js/main.0dde98d4.js"
+    "static/js/main.541695d6.js"
   ]
 }
