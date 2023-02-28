@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $birthday = Carbon\Carbon::createMidnightDate(1997,6,13,'America/Sao_Paulo');
-    // dd($birthday);
     return view('portfolio', [
         'year' => $birthday->diffInYears(now())
     ]);
