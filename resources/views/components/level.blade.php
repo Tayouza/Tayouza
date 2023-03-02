@@ -9,7 +9,7 @@
       </div>
     </div>
   @endfor
-  @for ($i = 0; $i < (7 - $points); $i++)
+  @for ($i = 0; $i < (8 - $points); $i++)
     <div>
       <div class="border border-black rounded-[50%] w-5 h-5"></div>
     </div>

@@ -38,34 +38,37 @@
       <x-skills class="flex flex-col gap-2">
         <h3 class="text-4xl mb-5">Hard Skills</h3>
         <x-hard-level skill="PHP" level="5">
-          <x-icons.php class="w-8" />
+          <x-icons.php class="w-8 h-8" />
         </x-hard-level>
         <x-hard-level skill="Laravel" level="4">
-          <x-icons.laravel class="w-6" />
+          <x-icons.laravel class="w-8 h-8" />
         </x-hard-level>
         <x-hard-level skill="Javascript" level="3">
-          <x-icons.javascript class="w-6" />
+          <x-icons.javascript class="w-8 h-8" />
         </x-hard-level>
         <x-hard-level skill="React" level="2">
-          <x-icons.react class="w-6" />
+          <x-icons.react class="w-8 h-8" />
         </x-hard-level>
         <x-hard-level skill="MySQL" level="4">
-          <x-icons.mysql class="w-6" />
+          <x-icons.mysql class="w-8 h-8" />
         </x-hard-level>
-        <x-hard-level skill="HTML" level="6">
-          <x-icons.html class="w-6" />
+        <x-hard-level skill="HTML" level="7">
+          <x-icons.html class="w-8 h-8" />
         </x-hard-level>
         <x-hard-level skill="CSS" level="5">
-          <x-icons.css class="w-6" />
+          <x-icons.css class="w-8 h-8" />
         </x-hard-level>
         <x-hard-level skill="SASS" level="3">
-          <x-icons.sass class="w-6" />
+          <x-icons.sass class="w-8 h-8" />
         </x-hard-level>
-        <x-hard-level skill="Git" level="5">
-          <x-icons.git class="w-6" />
+        <x-hard-level skill="Git" level="4">
+          <x-icons.git class="w-8 h-8" />
         </x-hard-level>
         <x-hard-level skill="Docker" level="5">
-          <x-icons.docker class="w-6" />
+          <x-icons.docker class="w-8 h-8" />
+        </x-hard-level>
+        <x-hard-level skill="Linux" level="5">
+          <x-icons.linux class="w-8 h-8" />
         </x-hard-level>
       </x-skills>
       <x-skills>
@@ -78,6 +81,12 @@
             <p class="text-lg">Dedicado</p>
           </li>
           <li>
+            <p class="text-lg">Focado</p>
+          </li>
+          <li>
+            <p class="text-lg">Senso lógico</p>
+          </li>
+          <li>
             <p class="text-lg">Criativo</p>
           </li>
           <li>
@@ -85,6 +94,12 @@
           </li>
           <li>
             <p class="text-lg">Atencioso</p>
+          </li>
+          <li>
+            <p class="text-lg">Automotivação</p>
+          </li>
+          <li>
+            <p class="text-lg">Empatia</p>
           </li>
           <li>
             <p class="text-lg">Trabalho em equipe</p>
@@ -99,6 +114,7 @@
       </x-skills>
     </article>
     <article class="w-full">
+      <x-projects />
     </article>
   </main>
 
