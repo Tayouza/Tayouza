@@ -12,9 +12,15 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        @wireUiScripts
+        @darkTheme
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-zinc-900 antialiased">
+        <x-notifications z-index="z-50" />
+        <div class="fixed top-5 right-5">
+            <x-button-change-theme />
+        </div>
         <div class="min-h-screen flex flex-col bg-zinc-100 bg-dots-lighter sm:justify-center items-center pt-6 sm:pt-0 bg-zinc-100 dark:bg-zinc-900">
             <div>
                 <a href="/">
@@ -26,5 +32,6 @@
                 {{ $slot }}
             </div>
         </div>
+        @livewire('livewire-ui-modal')
     </body>
 </html>

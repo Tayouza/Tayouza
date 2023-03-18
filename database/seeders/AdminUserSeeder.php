@@ -13,7 +13,7 @@ class AdminUserSeeder extends Seeder
      */
     public function run(): void
     {
-        $email = 'tayouza@admin';
+        $email = env('USER_EMAIL', 'tayouza@admin');
         $hasUser = User::query()->where('email', $email)->count();
         if($hasUser == 0){
             User::query()->create([
