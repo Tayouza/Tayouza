@@ -11,6 +11,7 @@
     @wireUiScripts
     @darkTheme
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body
@@ -46,6 +47,7 @@
             <x-projects />
         </article>
     </main>
+    @livewireScripts
     @livewire('livewire-ui-modal')
 </body>
 
