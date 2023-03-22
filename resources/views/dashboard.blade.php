@@ -6,12 +6,15 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="flex flex-col lg:flex-row gap-4 container mx-auto sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:grid lg:grid-cols-2 gap-4 container mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-zinc-800 p-4 shadow-sm w-full sm:rounded-lg">
                 <livewire:hardskill-livewire />
             </div>
             <div class="bg-white dark:bg-zinc-800 p-4 shadow-sm w-full sm:rounded-lg">
                 <livewire:softskill-livewire />
+            </div>
+            <div class="bg-white dark:bg-zinc-800 p-4 shadow-sm w-full sm:rounded-lg">
+                <livewire:project-livewire />
             </div>
         </div>
     </div>

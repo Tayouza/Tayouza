@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('portfolio');
-});
+})->name('portfolio');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

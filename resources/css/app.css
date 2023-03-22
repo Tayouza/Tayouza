@@ -13,7 +13,8 @@
 }
 
 *::selection {
-  background: #cca219;
+  background-color: #cca219;
+  color: #fff;
 }
 
 .bg-dots-darker {

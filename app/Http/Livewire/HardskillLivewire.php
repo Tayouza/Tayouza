@@ -2,9 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\File;
+use App\Helpers\FileUploadHelper;
 use App\Models\Hardskill;
-use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -46,18 +45,7 @@ class HardskillLivewire extends Component
         $this->validate();
         
         if($this->icon){
-            $extension = $this->icon->getClientOriginalExtension();
-            $hashName = Str::uuid($this->icon->getClientOriginalName());
-            $this->icon->storeAs('public/icons', $hashName.'.'.$extension);
-    
-            $file = File::create([
-                'original_name' => $this->icon->getClientOriginalName(),
-                'hash_name' => $hashName,
-                'extension' => $extension,
-                'path' => 'icons/' . $hashName.'.'.$extension,
-            ]);
-
-            $this->hardskill->file_id = $file->id;
+            $this->hardskill->file_id = FileUploadHelper::save($this->icon);
         }
 
         $this->hardskill->name = $this->name;
@@ -89,6 +77,6 @@ class HardskillLivewire extends Component
 
     public function getHardskillsProperty()
     {
-        return Hardskill::all();
+        return Hardskill::with('file')->get();
     }
 }

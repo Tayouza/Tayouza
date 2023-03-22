@@ -18,7 +18,7 @@
     class="antialiased relative sm:flex sm:flex-col sm:items-center min-h-screen bg-center bg-zinc-100 bg-dots-darker dark:bg-dots-lighter dark:bg-zinc-900 selection:bg-red-500 selection:text-white">
     @if (Route::has('login'))
     <x-button-change-theme />
-    <div class="fixed -top-2 right-0 p-6 text-right">
+    <div class="fixed -top-1 right-8 p-6 text-right">
         @auth
         <a href="{{ url('/dashboard') }}"
             class="font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 opacity-[0.01]">Dashboard</a>
