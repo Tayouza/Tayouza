@@ -14,6 +14,7 @@ class Hardskill extends Model
     protected $fillable = [
         'name',
         'icon',
-        'level'
+        'level',
+        'order'
     ];
 }

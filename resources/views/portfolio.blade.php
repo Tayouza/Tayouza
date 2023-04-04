@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/favicon.ico')}}" type="image/x-icon">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="Olá &#128075;, eu sou Taylor Canabarro de Souza, bem-vindo ao meu Portifólio. De pseudônimo Tayouza que é um acrônimo para o meu nome e segundo sobrenome.">
+    <meta name="google-site-verification" content="Dns22gr7PBGvZ1d4cEN7c0CzvNZ033dJr59o6l_9xcE">
 
     <!-- Scripts -->
     @wireUiScripts

@@ -17,7 +17,7 @@ class MyHardSkills extends Component
      */
     public function render(): View|Closure|string
     {
-        $hardskills = Hardskill::with(['file'])->get();
+        $hardskills = Hardskill::with(['file'])->orderBy('order')->get();
         return view('components.my-hard-skills', [
             'hardskills' => $hardskills
         ]);

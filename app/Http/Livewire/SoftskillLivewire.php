@@ -11,8 +11,10 @@ class SoftskillLivewire extends Component
     use Actions;
     
     public $name = '';
+    public $order;
     public $softskill;
     public $softskillId;
+    public $lastOrder;
 
     protected $listeners = ['RemoveSoft' => '$refresh'];
 
@@ -22,6 +24,7 @@ class SoftskillLivewire extends Component
 
     public function render()
     {
+        $this->lastOrder = Softskill::orderBy('order')->get()?->last()?->order ?? 0;
         return view('livewire.softskill-livewire');
     }
 
@@ -35,7 +38,13 @@ class SoftskillLivewire extends Component
             $this->softskill = Softskill::find($id);
         }
 
+        if(!$this->order){
+            $lastOrder = $this->lastOrder;
+            $this->order = !$lastOrder ? 1 : $lastOrder +1;
+        }
+
         $this->softskill->name = $this->name;
+        $this->softskill->order = $this->order;
         $this->softskill->save();
 
         $this->notification()->success(
@@ -44,17 +53,14 @@ class SoftskillLivewire extends Component
         );
 
         $this->reset();
+        $this->emitSelf('$refresh');
     }
 
     public function edit(int $id){
         $this->softskill = Softskill::find($id);
         $this->softskillId = $id;
         $this->name = $this->softskill->name;
-    }
-
-    public function remove(int $id){
-        $this->softskill = Softskill::find($id);
-        $this->softskill->delete();
+        $this->order = $this->softskill->order;
     }
 
     public function getSoftskillsProperty()

@@ -15,10 +15,12 @@ class HardskillLivewire extends Component
 
     public $name;
     public $level = 1;
+    public $order;
     public $icon;
     public $iconPath;
     public $hardskill;
     public $hardskillId;
+    public $lastOrder;
 
     protected $listeners = ['RemoveHard' => '$refresh'];
 
@@ -30,6 +32,7 @@ class HardskillLivewire extends Component
 
     public function render()
     {
+        $this->lastOrder = Hardskill::orderBy('order')->get()?->last()?->order ?? 0;
         return view('livewire.hardskill-livewire');
     }
 
@@ -48,8 +51,14 @@ class HardskillLivewire extends Component
             $this->hardskill->file_id = FileUploadHelper::save($this->icon);
         }
 
+        if(!$this->order){
+            $lastOrder = $this->lastOrder;
+            $this->order = !$lastOrder ? 1 : $lastOrder +1;
+        }
+
         $this->hardskill->name = $this->name;
         $this->hardskill->level = $this->level;
+        $this->hardskill->order = $this->order;
         $this->hardskill->save();
 
         $this->notification()->success(
@@ -66,17 +75,33 @@ class HardskillLivewire extends Component
         $this->hardskillId = $id;
         $this->name = $this->hardskill->name;
         $this->level = $this->hardskill->level;
+        $this->order = $this->hardskill->order;
         $this->iconPath = $this->hardskill->file->path;
     }
 
-    public function remove(int $id)
+    public function upOrder(int $order)
     {
-        $this->hardskill = Hardskill::find($id);
-        $this->hardskill->delete();
+        $upHard = Hardskill::where('order', $order)->first();
+        $downHard = Hardskill::where('order', $order -1)->first();
+        $upHard->order = $order -1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
+    }
+
+    public function downOrder(int $order)
+    {
+        $upHard = Hardskill::where('order', $order)->first();
+        $downHard = Hardskill::where('order', $order +1)->first();
+        $upHard->order = $order +1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
     }
 
     public function getHardskillsProperty()
     {
-        return Hardskill::with('file')->get();
+        return Hardskill::with('file')->orderBy('order')->get();
     }
+    
 }

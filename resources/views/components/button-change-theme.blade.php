@@ -1,5 +1,5 @@
 <div class="fixed -top-1 right-0 p-6 z-50">
-    <button id="theme-toggle" type="button">
+    <button id="theme-toggle" type="button" aria-label="change theme">
         <x-icons.moon />
         <x-icons.sun />
     </button>

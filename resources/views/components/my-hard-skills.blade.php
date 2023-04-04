@@ -4,7 +4,7 @@
         $iconPath = $hardskill->file->path;
     @endphp
     <x-hard-level skill="{{$hardskill->name}}" level="{{$hardskill->level}}">
-        <img src="{{asset("storage/$iconPath")}}" class="w-8 h-8" >
+        <img src="{{asset("storage/$iconPath")}}" class="w-8 h-8" alt="{{$hardskill->name}}">
     </x-hard-level>
     @endforeach
 </x-skills>

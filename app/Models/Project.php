@@ -14,6 +14,7 @@ class Project extends Model
     protected $fillable = [
         'name',
         'url',
-        'file_id'
+        'file_id',
+        'order'
     ];
 }
