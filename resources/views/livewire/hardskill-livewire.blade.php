@@ -16,7 +16,7 @@
                 <div class="flex flex-col items-center justify-center">
                     <span class="text-zinc-900 dark:text-white">preview:</span>
                     @if(isset($iconPath))
-                    <img src="{{asset(" storage/$iconPath")}}" class="w-8 h-8">
+                    <img src="{{asset("/storage/$iconPath")}}" class="w-8 h-8">
                     @else
                     <img src="{{ $icon->temporaryUrl() }}" class="w-8">
                     @endif
