@@ -1,0 +1,17 @@
+{
+    "name": "TayouzaDev",
+    "short_name": "Tayouza",
+    "start_url": "/index.php",
+    "background_color": "#efd166",
+    "description": "Olá, eu sou Taylor Canabarro de Souza, bem-vindo ao meu Portifólio. De pseudônimo Tayouza que é um acrônimo para o meu nome e segundo sobrenome.",
+    "display": "fullscreen",
+    "theme_color": "#efd166",
+    "icons": [
+        {
+            "src": "./logo512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

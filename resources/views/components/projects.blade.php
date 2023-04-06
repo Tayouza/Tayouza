@@ -7,7 +7,7 @@
         $imgPath = $project->file->path;
       @endphp
       <a href="{{$project->url}}" class="card" target="_blank">
-        <img src="{{asset("storage/$imgPath")}}">
+        <img src="{{asset("storage/$imgPath")}}" alt="{{$project->name}}">
         <p class="title-card">{{$project->name}}</p>
       </a>
       @endforeach

@@ -19,6 +19,8 @@ class ProjectLivewire extends Component
     public $url;
     public $img;
     public $imgPath;
+    public $order;
+    public $lastOrder;
 
     protected $listeners = ['RemoveProject' => '$refresh'];
 
@@ -30,6 +32,7 @@ class ProjectLivewire extends Component
 
     public function render()
     {
+        $this->lastOrder = Project::orderBy('order')->get()?->last()?->order ?? 0;
         return view('livewire.project-livewire');
     }
 
@@ -47,9 +50,15 @@ class ProjectLivewire extends Component
         if ($this->img) {
             $this->project->file_id = FileUploadHelper::save($this->img);
         }
+
+        if(!$this->order){
+            $lastOrder = $this->lastOrder;
+            $this->order = !$lastOrder ? 1 : $lastOrder +1;
+        }
         
         $this->project->name = $this->name;
         $this->project->url = $this->url;
+        $this->project->order = $this->order;
         $this->project->save();
 
         $this->notification()->success(
@@ -66,12 +75,33 @@ class ProjectLivewire extends Component
         $this->projectId = $id;
         $this->name = $this->project->name;
         $this->url = $this->project->url;
+        $this->order = $this->project->order;
         $this->imgPath = $this->project->file->path;
+    }
+
+    public function upOrder(int $order)
+    {
+        $upHard = Project::where('order', $order)->first();
+        $downHard = Project::where('order', $order -1)->first();
+        $upHard->order = $order -1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
+    }
+
+    public function downOrder(int $order)
+    {
+        $upHard = Project::where('order', $order)->first();
+        $downHard = Project::where('order', $order +1)->first();
+        $upHard->order = $order +1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
     }
 
 
     public function getProjectsProperty()
     {
-        return Project::all();
+        return Project::with('file')->orderBy('order')->get();
     }
 }

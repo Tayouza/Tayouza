@@ -46,6 +46,22 @@
                     <x-icons.trash class="w-4 fill-red-500 cursor-pointer"
                         wire:click="$emit('openModal', 'remove-project', {{ json_encode(['id' => $project->id]) }})" />
                 </div>
+                <div class="flex flex-col gap-1 w-6 items-center justify-center">
+                    @if($this->projects->count() > 1)
+                        @if ($project->order !== 1 && $project->order !== $this->lastOrder)
+                        <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
+                            wire:click="upOrder({{$project->order}})" />
+                        <x-icons.arrow-down class="fill-white cursor-pointer hover:fill-zinc-400"
+                            wire:click="downOrder({{$project->order}})" />
+                        @elseif ($project->order === 1)
+                        <x-icons.arrow-down class="fill-white cursor-pointer hover:fill-zinc-400"
+                            wire:click="downOrder({{$project->order}})" />
+                        @elseif ($project->order === $this->lastOrder)
+                        <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
+                            wire:click="upOrder({{$project->order}})" />
+                        @endif
+                    @endif
+                </div>
             </li>
             @endforeach
         </ul>

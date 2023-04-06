@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/favicon.ico')}}" type="image/x-icon">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="description" content="Olá &#128075;, eu sou Taylor Canabarro de Souza, bem-vindo ao meu Portifólio. De pseudônimo Tayouza que é um acrônimo para o meu nome e segundo sobrenome.">
+    <meta name="description"
+        content="Olá &#128075;, eu sou Taylor Canabarro de Souza, bem-vindo ao meu Portifólio. De pseudônimo Tayouza que é um acrônimo para o meu nome e segundo sobrenome.">
     <meta name="google-site-verification" content="Dns22gr7PBGvZ1d4cEN7c0CzvNZ033dJr59o6l_9xcE">
-
+    <meta name="theme-color" content="#fff">
+    <!-- PWA  -->
+    <meta name="theme-color" content="#efd166" />
+    <link rel="apple-touch-icon" href="/logo512.PNG">
+    <link rel="manifest" href="/manifest.json">
     <!-- Scripts -->
     @wireUiScripts
     @darkTheme
@@ -51,6 +56,14 @@
     </main>
     @livewireScripts
     @livewire('livewire-ui-modal')
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function (reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+    </script>
 </body>
 
 </html>
