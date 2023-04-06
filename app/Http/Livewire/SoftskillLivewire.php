@@ -64,4 +64,24 @@ class SoftskillLivewire extends Component
         $this->name = $this->softskill->name;
         $this->order = $this->softskill->order;
     }
+
+    public function upOrder(int $order)
+    {
+        $upHard = Softskill::where('order', $order)->first();
+        $downHard = Softskill::where('order', $order -1)->first();
+        $upHard->order = $order -1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
+    }
+
+    public function downOrder(int $order)
+    {
+        $upHard = Softskill::where('order', $order)->first();
+        $downHard = Softskill::where('order', $order +1)->first();
+        $upHard->order = $order +1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
+    }
 }
