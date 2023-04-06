@@ -55,15 +55,15 @@
                     <div class="flex flex-col gap-1 w-4 items-center justify-center">
                         @if($this->hardskills->count() > 1)
                         @if ($hardskill->order !== 1 && $hardskill->order !== $this->lastOrder)
-                        <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-up class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="upOrder({{$hardskill->order}})" />
-                        <x-icons.arrow-down class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-down class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="downOrder({{$hardskill->order}})" />
                         @elseif ($hardskill->order === 1)
-                        <x-icons.arrow-down class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-down class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="downOrder({{$hardskill->order}})" />
                         @elseif ($hardskill->order === $this->lastOrder)
-                        <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-up class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="upOrder({{$hardskill->order}})" />
                         @endif
                         @endif

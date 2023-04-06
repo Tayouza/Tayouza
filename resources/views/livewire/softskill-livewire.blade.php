@@ -26,15 +26,15 @@
                     <div class="flex flex-col gap-1 w-4 items-center justify-center">
                         @if($this->softskills->count() > 1)
                         @if ($softskill->order !== 1 && $softskill->order !== $this->lastOrder)
-                        <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-up class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="upOrder({{$softskill->order}})" />
-                        <x-icons.arrow-down class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-down class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="downOrder({{$softskill->order}})" />
                         @elseif ($softskill->order === 1)
-                        <x-icons.arrow-down class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-down class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="downOrder({{$softskill->order}})" />
                         @elseif ($softskill->order === $this->lastOrder)
-                        <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
+                        <x-icons.arrow-up class="fill-white cursor-pointer fill-zinc-700 dark:fill-white hover:fill-zinc-400"
                             wire:click="upOrder({{$softskill->order}})" />
                         @endif
                         @endif
