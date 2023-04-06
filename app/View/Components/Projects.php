@@ -17,7 +17,7 @@ class Projects extends Component
      */
     public function render(): View|Closure|string
     {
-        $projects = Project::with(['file'])->get();
+        $projects = Project::with(['file'])->orderBy('order')->get();
         return view('components.projects', [
             'projects' => $projects
         ]);
