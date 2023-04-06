@@ -13,8 +13,9 @@ class ProjectLivewire extends Component
     use WithFileUploads;
     use Actions;
 
-    public $projectId;
+    public $projects;
     public $project;
+    public $projectId;
     public $name;
     public $url;
     public $img;
@@ -32,7 +33,8 @@ class ProjectLivewire extends Component
 
     public function render()
     {
-        $this->lastOrder = Project::orderBy('order')->get()?->last()?->order ?? 0;
+        $this->projects = Project::with(['file'])->orderBy('order')->get();
+        $this->lastOrder = $this->projects?->last()?->order ?? 0;
         return view('livewire.project-livewire');
     }
 
@@ -97,11 +99,5 @@ class ProjectLivewire extends Component
         $downHard->order = $order;
         $upHard->save();
         $downHard->save();
-    }
-
-
-    public function getProjectsProperty()
-    {
-        return Project::with('file')->orderBy('order')->get();
     }
 }

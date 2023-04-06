@@ -12,6 +12,7 @@ class SoftskillLivewire extends Component
     
     public $name = '';
     public $order;
+    public $softskills;
     public $softskill;
     public $softskillId;
     public $lastOrder;
@@ -24,7 +25,8 @@ class SoftskillLivewire extends Component
 
     public function render()
     {
-        $this->lastOrder = Softskill::orderBy('order')->get()?->last()?->order ?? 0;
+        $this->softskills = Softskill::orderBy('order')->get();
+        $this->lastOrder = $this->softskills?->last()?->order ?? 0;
         return view('livewire.softskill-livewire');
     }
 
@@ -61,10 +63,5 @@ class SoftskillLivewire extends Component
         $this->softskillId = $id;
         $this->name = $this->softskill->name;
         $this->order = $this->softskill->order;
-    }
-
-    public function getSoftskillsProperty()
-    {
-        return Softskill::all();
     }
 }

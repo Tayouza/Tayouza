@@ -17,7 +17,7 @@
             <div class="flex flex-col items-center justify-center">
                 <span class="text-zinc-900 dark:text-white">preview:</span>
                 @if(isset($imgPath))
-                <img src="{{asset("storage/$imgPath")}}">
+                <img src="{{asset(" storage/$imgPath")}}">
                 @else
                 <img src="{{ $img->temporaryUrl() }}">
                 @endif
@@ -45,9 +45,8 @@
                     <x-icons.edit class="w-4 fill-blue-500 cursor-pointer" wire:click="edit({{$project->id}})" />
                     <x-icons.trash class="w-4 fill-red-500 cursor-pointer"
                         wire:click="$emit('openModal', 'remove-project', {{ json_encode(['id' => $project->id]) }})" />
-                </div>
-                <div class="flex flex-col gap-1 w-6 items-center justify-center">
-                    @if($this->projects->count() > 1)
+                    <div class="flex flex-col gap-1 w-4 items-center justify-center">
+                        @if($this->projects->count() > 1)
                         @if ($project->order !== 1 && $project->order !== $this->lastOrder)
                         <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
                             wire:click="upOrder({{$project->order}})" />
@@ -60,7 +59,8 @@
                         <x-icons.arrow-up class="fill-white cursor-pointer hover:fill-zinc-400"
                             wire:click="upOrder({{$project->order}})" />
                         @endif
-                    @endif
+                        @endif
+                    </div>
                 </div>
             </li>
             @endforeach

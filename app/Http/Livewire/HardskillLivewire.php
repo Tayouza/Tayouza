@@ -18,6 +18,7 @@ class HardskillLivewire extends Component
     public $order;
     public $icon;
     public $iconPath;
+    public $hardskills;
     public $hardskill;
     public $hardskillId;
     public $lastOrder;
@@ -32,7 +33,8 @@ class HardskillLivewire extends Component
 
     public function render()
     {
-        $this->lastOrder = Hardskill::orderBy('order')->get()?->last()?->order ?? 0;
+        $this->hardskills = Hardskill::with(['file'])->orderBy('order')->get();
+        $this->lastOrder = $this->hardskills?->last()?->order ?? 0;
         return view('livewire.hardskill-livewire');
     }
 
@@ -97,11 +99,6 @@ class HardskillLivewire extends Component
         $downHard->order = $order;
         $upHard->save();
         $downHard->save();
-    }
-
-    public function getHardskillsProperty()
-    {
-        return Hardskill::with('file')->orderBy('order')->get();
     }
     
 }
