@@ -2,9 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\File;
+use App\Helpers\FileUploadHelper;
 use App\Models\Hardskill;
-use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -16,10 +15,13 @@ class HardskillLivewire extends Component
 
     public $name;
     public $level = 1;
+    public $order;
     public $icon;
     public $iconPath;
+    public $hardskills;
     public $hardskill;
     public $hardskillId;
+    public $lastOrder;
 
     protected $listeners = ['RemoveHard' => '$refresh'];
 
@@ -31,6 +33,8 @@ class HardskillLivewire extends Component
 
     public function render()
     {
+        $this->hardskills = Hardskill::with(['file'])->orderBy('order')->get();
+        $this->lastOrder = $this->hardskills?->last()?->order ?? 0;
         return view('livewire.hardskill-livewire');
     }
 
@@ -46,22 +50,17 @@ class HardskillLivewire extends Component
         $this->validate();
         
         if($this->icon){
-            $extension = $this->icon->getClientOriginalExtension();
-            $hashName = Str::uuid($this->icon->getClientOriginalName());
-            $this->icon->storeAs('public/icons', $hashName.'.'.$extension);
-    
-            $file = File::create([
-                'original_name' => $this->icon->getClientOriginalName(),
-                'hash_name' => $hashName,
-                'extension' => $extension,
-                'path' => 'icons/' . $hashName.'.'.$extension,
-            ]);
+            $this->hardskill->file_id = FileUploadHelper::save($this->icon);
+        }
 
-            $this->hardskill->file_id = $file->id;
+        if(!$this->order){
+            $lastOrder = $this->lastOrder;
+            $this->order = !$lastOrder ? 1 : $lastOrder +1;
         }
 
         $this->hardskill->name = $this->name;
         $this->hardskill->level = $this->level;
+        $this->hardskill->order = $this->order;
         $this->hardskill->save();
 
         $this->notification()->success(
@@ -78,17 +77,28 @@ class HardskillLivewire extends Component
         $this->hardskillId = $id;
         $this->name = $this->hardskill->name;
         $this->level = $this->hardskill->level;
+        $this->order = $this->hardskill->order;
         $this->iconPath = $this->hardskill->file->path;
     }
 
-    public function remove(int $id)
+    public function upOrder(int $order)
     {
-        $this->hardskill = Hardskill::find($id);
-        $this->hardskill->delete();
+        $upHard = Hardskill::where('order', $order)->first();
+        $downHard = Hardskill::where('order', $order -1)->first();
+        $upHard->order = $order -1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
     }
 
-    public function getHardskillsProperty()
+    public function downOrder(int $order)
     {
-        return Hardskill::all();
+        $upHard = Hardskill::where('order', $order)->first();
+        $downHard = Hardskill::where('order', $order +1)->first();
+        $upHard->order = $order +1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
     }
+    
 }

@@ -11,8 +11,11 @@ class SoftskillLivewire extends Component
     use Actions;
     
     public $name = '';
+    public $order;
+    public $softskills;
     public $softskill;
     public $softskillId;
+    public $lastOrder;
 
     protected $listeners = ['RemoveSoft' => '$refresh'];
 
@@ -22,6 +25,8 @@ class SoftskillLivewire extends Component
 
     public function render()
     {
+        $this->softskills = Softskill::orderBy('order')->get();
+        $this->lastOrder = $this->softskills?->last()?->order ?? 0;
         return view('livewire.softskill-livewire');
     }
 
@@ -35,7 +40,13 @@ class SoftskillLivewire extends Component
             $this->softskill = Softskill::find($id);
         }
 
+        if(!$this->order){
+            $lastOrder = $this->lastOrder;
+            $this->order = !$lastOrder ? 1 : $lastOrder +1;
+        }
+
         $this->softskill->name = $this->name;
+        $this->softskill->order = $this->order;
         $this->softskill->save();
 
         $this->notification()->success(
@@ -44,21 +55,33 @@ class SoftskillLivewire extends Component
         );
 
         $this->reset();
+        $this->emitSelf('$refresh');
     }
 
     public function edit(int $id){
         $this->softskill = Softskill::find($id);
         $this->softskillId = $id;
         $this->name = $this->softskill->name;
+        $this->order = $this->softskill->order;
     }
 
-    public function remove(int $id){
-        $this->softskill = Softskill::find($id);
-        $this->softskill->delete();
-    }
-
-    public function getSoftskillsProperty()
+    public function upOrder(int $order)
     {
-        return Softskill::all();
+        $upHard = Softskill::where('order', $order)->first();
+        $downHard = Softskill::where('order', $order -1)->first();
+        $upHard->order = $order -1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
+    }
+
+    public function downOrder(int $order)
+    {
+        $upHard = Softskill::where('order', $order)->first();
+        $downHard = Softskill::where('order', $order +1)->first();
+        $upHard->order = $order +1;
+        $downHard->order = $order;
+        $upHard->save();
+        $downHard->save();
     }
 }

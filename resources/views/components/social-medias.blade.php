@@ -1,7 +1,7 @@
 <div {{$attributes->merge([
   'class' => 'social-medias'
   ])}}>
-  <a href="tel:(51)99639-0912" rel="noreferrer" class="ringmove">
+  <a href="tel:(51)99639-0912" rel="noreferrer" class="ringmove" aria-label="phone">
     <svg stroke="currentColor" fill="#ff5555" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -9,7 +9,7 @@
       </path>
     </svg>
   </a>
-  <a href="mailto:tayouzadev@gmail.com" rel="noreferrer" target="_blank" class="social-media">
+  <a href="mailto:tayouzadev@gmail.com" rel="noreferrer" target="_blank" class="social-media" aria-label="email">
     <svg stroke="currentColor" fill="#777" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -17,7 +17,7 @@
       </path>
     </svg>
   </a>
-  <a href="https://www.linkedin.com/in/taylorcanabarro/" rel="noreferrer" target="_blank" class="social-media">
+  <a href="https://www.linkedin.com/in/taylorcanabarro/" rel="noreferrer" target="_blank" class="social-media" aria-label="linkedin">
     <svg stroke="currentColor" fill="#0a66c2" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -25,7 +25,7 @@
       </path>
     </svg>
   </a>
-  <a href="https://api.whatsapp.com/send/?phone=5551996390912" rel="noreferrer" target="_blank" class="social-media">
+  <a href="https://api.whatsapp.com/send/?phone=5551996390912" rel="noreferrer" target="_blank" class="social-media" aria-label="whatsapp">
     <svg stroke="currentColor" fill="#48c757" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -33,7 +33,8 @@
       </path>
     </svg>
   </a>
-  <a href="https://www.github.com/tayouza" rel="noreferrer" target="_blank" class="social-media"><svg
+  <a href="https://www.github.com/tayouza" rel="noreferrer" target="_blank" class="social-media" aria-label="github">
+    <svg
       stroke="currentColor" fill="#777" stroke-width="0" viewBox="0 0 496 512" height="1em" width="1em"
       xmlns="http://www.w3.org/2000/svg">
       <path

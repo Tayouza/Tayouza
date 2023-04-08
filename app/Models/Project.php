@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\Relations\HardskillRelations;
+use App\Models\Relations\ProjectRelations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Hardskill extends Model
+class Project extends Model
 {
     use HasFactory;
-    use HardskillRelations;
+    use ProjectRelations;
 
     protected $fillable = [
         'name',
-        'icon',
-        'level',
+        'url',
+        'file_id',
         'order'
     ];
 }

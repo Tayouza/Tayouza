@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\File;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,8 +16,9 @@ return new class extends Migration
         Schema::create('hardskills', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignIdFor(\App\Models\File::class,'file_id');
+            $table->foreignIdFor(File::class, 'file_id');
             $table->integer('level');
+            $table->integer('order');
             $table->timestamps();
         });
     }

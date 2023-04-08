@@ -12,6 +12,7 @@ class Softskill extends Model
     use SoftskillRelations;
 
     protected $fillable = [
-        'name'
+        'name',
+        'order'
     ];
 }
