@@ -15,6 +15,6 @@ class Hardskill extends Model
         'name',
         'icon',
         'level',
-        'order'
+        'order',
     ];
 }

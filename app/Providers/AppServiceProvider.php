@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {  
+    {
         Blade::directive('darkTheme', function () {
             return "
                 <script>

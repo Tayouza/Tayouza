@@ -15,13 +15,12 @@ class AdminUserSeeder extends Seeder
     {
         $email = env('USER_EMAIL', 'tayouza@admin');
         $hasUser = User::query()->where('email', $email)->count();
-        if($hasUser == 0){
+        if ($hasUser == 0) {
             User::query()->create([
-                'name'     => 'Tayouza',
-                'email'    => $email,
-                'password' => Hash::make(env('USER_PASSWORD', '123456'))
+                'name' => 'Tayouza',
+                'email' => $email,
+                'password' => Hash::make(env('USER_PASSWORD', '123456')),
             ]);
         }
-
     }
 }

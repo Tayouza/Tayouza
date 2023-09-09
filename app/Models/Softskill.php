@@ -13,6 +13,6 @@ class Softskill extends Model
 
     protected $fillable = [
         'name',
-        'order'
+        'order',
     ];
 }

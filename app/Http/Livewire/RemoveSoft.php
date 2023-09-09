@@ -20,7 +20,7 @@ class RemoveSoft extends ModalComponent
     public function render()
     {
         return view('livewire.remove-soft', [
-            'soft' => $this->soft
+            'soft' => $this->soft,
         ]);
     }
 
@@ -29,6 +29,6 @@ class RemoveSoft extends ModalComponent
         $this->closeModal();
         $this->emit('RemoveSoft');
         $this->soft->delete();
-        $this->notification()->success('Okay', 'Você deletou a softskill ' . $this->soft->name);
+        $this->notification()->success('Okay', 'Você deletou a softskill '.$this->soft->name);
     }
 }
