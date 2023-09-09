@@ -26,11 +26,11 @@ class RemoveUnunsedFiles extends Command
     public function handle(): void
     {
         $files = \App\Models\File::all();
-        foreach($files as $file){
-            if(!$file->hardskill){
+        foreach ($files as $file) {
+            if (! $file->hardskill) {
                 unlink(storage_path("app/public/$file->path"));
                 $file->delete();
-                $this->info('Removeu o ' . $file->original_name);
+                $this->info('Removeu o '.$file->original_name);
             }
         }
     }

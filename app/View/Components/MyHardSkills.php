@@ -10,7 +10,8 @@ use Illuminate\View\Component;
 class MyHardSkills extends Component
 {
     public function __construct()
-    {}
+    {
+    }
 
     /**
      * Get the view / contents that represent the component.
@@ -18,8 +19,9 @@ class MyHardSkills extends Component
     public function render(): View|Closure|string
     {
         $hardskills = Hardskill::with(['file'])->orderBy('order')->get();
+
         return view('components.my-hard-skills', [
-            'hardskills' => $hardskills
+            'hardskills' => $hardskills,
         ]);
     }
 }

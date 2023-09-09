@@ -20,7 +20,7 @@ class RemoveHard extends ModalComponent
     public function render()
     {
         return view('livewire.remove-hard', [
-            'hard' => $this->hard
+            'hard' => $this->hard,
         ]);
     }
 
@@ -29,6 +29,6 @@ class RemoveHard extends ModalComponent
         $this->closeModal();
         $this->emit('RemoveHard');
         $this->hard->delete();
-        $this->notification()->success('Okay', 'Você deletou a hardskill ' . $this->hard->name);
+        $this->notification()->success('Okay', 'Você deletou a hardskill '.$this->hard->name);
     }
 }

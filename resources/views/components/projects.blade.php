@@ -3,12 +3,10 @@
   <div class="container-cards">
     <div class="cards">
       @foreach ($projects as $project)
-      @php
-        $imgPath = $project->file->path;
-      @endphp
       <a href="{{$project->url}}" class="card" target="_blank">
-        <img src="{{asset("storage/$imgPath")}}" alt="{{$project->name}}">
-        <p class="title-card">{{$project->name}}</p>
+        <img src="{{ asset("storage/{$project->file->path}") }}" alt="{{ $project->name }}">
+        <span class="desc-card">{{ $project->description }}</span>
+        <p class="title-card">{{ $project->name }}</p>
       </a>
       @endforeach
     </div>

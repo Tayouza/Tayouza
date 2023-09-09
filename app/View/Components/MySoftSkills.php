@@ -10,7 +10,8 @@ use Illuminate\View\Component;
 class MySoftSkills extends Component
 {
     public function __construct()
-    {}
+    {
+    }
 
     /**
      * Get the view / contents that represent the component.
@@ -18,8 +19,9 @@ class MySoftSkills extends Component
     public function render(): View|Closure|string
     {
         $softskills = Softskill::all();
+
         return view('components.my-soft-skills', [
-            'softskills' => $softskills
+            'softskills' => $softskills,
         ]);
     }
 }

@@ -10,7 +10,8 @@ use Illuminate\View\Component;
 class Projects extends Component
 {
     public function __construct()
-    {}
+    {
+    }
 
     /**
      * Get the view / contents that represent the component.
@@ -18,8 +19,9 @@ class Projects extends Component
     public function render(): View|Closure|string
     {
         $projects = Project::with(['file'])->orderBy('order')->get();
+
         return view('components.projects', [
-            'projects' => $projects
+            'projects' => $projects,
         ]);
     }
 }

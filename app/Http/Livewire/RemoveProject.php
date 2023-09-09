@@ -20,7 +20,7 @@ class RemoveProject extends ModalComponent
     public function render()
     {
         return view('livewire.remove-project', [
-            'project' => $this->project
+            'project' => $this->project,
         ]);
     }
 
@@ -29,6 +29,6 @@ class RemoveProject extends ModalComponent
         $this->closeModal();
         $this->emit('RemoveProject');
         $this->project->delete();
-        $this->notification()->success('Okay', 'Você deletou o projeto ' . $this->project->name);
+        $this->notification()->success('Okay', 'Você deletou o projeto '.$this->project->name);
     }
 }

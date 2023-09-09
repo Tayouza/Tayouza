@@ -2,12 +2,14 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Str;
 use App\Models\File;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
+use Livewire\TemporaryUploadedFile;
 
 class FileUploadHelper
 {
-    public static function save($file)
+    public static function save(TemporaryUploadedFile|UploadedFile|array|null $file)
     {
         $extension = $file->getClientOriginalExtension();
         $hashName = Str::uuid($file->getClientOriginalName());
@@ -17,7 +19,7 @@ class FileUploadHelper
             'original_name' => $file->getClientOriginalName(),
             'hash_name' => $hashName,
             'extension' => $extension,
-            'path' => 'icons/' . $hashName.'.'.$extension,
+            'path' => 'icons/'.$hashName.'.'.$extension,
         ]);
 
         return $file->id;

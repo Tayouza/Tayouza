@@ -15,6 +15,6 @@ class Project extends Model
         'name',
         'url',
         'file_id',
-        'order'
+        'order',
     ];
 }

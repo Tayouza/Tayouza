@@ -9,24 +9,30 @@ use WireUi\Traits\Actions;
 class SoftskillLivewire extends Component
 {
     use Actions;
-    
+
     public $name = '';
+
     public $order;
+
     public $softskills;
+
     public $softskill;
+
     public $softskillId;
+
     public $lastOrder;
 
     protected $listeners = ['RemoveSoft' => '$refresh'];
 
     protected $rules = [
-        'name'  => 'required|string',
+        'name' => 'required|string',
     ];
 
     public function render()
     {
         $this->softskills = Softskill::orderBy('order')->get();
         $this->lastOrder = $this->softskills?->last()?->order ?? 0;
+
         return view('livewire.softskill-livewire');
     }
 
@@ -34,15 +40,15 @@ class SoftskillLivewire extends Component
     {
         $this->validate();
 
-        if(!$id){
+        if (! $id) {
             $this->softskill = new Softskill();
-        }else{
+        } else {
             $this->softskill = Softskill::find($id);
         }
 
-        if(!$this->order){
+        if (! $this->order) {
             $lastOrder = $this->lastOrder;
-            $this->order = !$lastOrder ? 1 : $lastOrder +1;
+            $this->order = ! $lastOrder ? 1 : $lastOrder + 1;
         }
 
         $this->softskill->name = $this->name;
@@ -51,14 +57,15 @@ class SoftskillLivewire extends Component
 
         $this->notification()->success(
             'Softskill salva',
-            'A skill ' . $this->name . ' foi salva com sucesso!'
+            'A skill '.$this->name.' foi salva com sucesso!'
         );
 
         $this->reset();
         $this->emitSelf('$refresh');
     }
 
-    public function edit(int $id){
+    public function edit(int $id)
+    {
         $this->softskill = Softskill::find($id);
         $this->softskillId = $id;
         $this->name = $this->softskill->name;
@@ -68,8 +75,8 @@ class SoftskillLivewire extends Component
     public function upOrder(int $order)
     {
         $upHard = Softskill::where('order', $order)->first();
-        $downHard = Softskill::where('order', $order -1)->first();
-        $upHard->order = $order -1;
+        $downHard = Softskill::where('order', $order - 1)->first();
+        $upHard->order = $order - 1;
         $downHard->order = $order;
         $upHard->save();
         $downHard->save();
@@ -78,8 +85,8 @@ class SoftskillLivewire extends Component
     public function downOrder(int $order)
     {
         $upHard = Softskill::where('order', $order)->first();
-        $downHard = Softskill::where('order', $order +1)->first();
-        $upHard->order = $order +1;
+        $downHard = Softskill::where('order', $order + 1)->first();
+        $upHard->order = $order + 1;
         $downHard->order = $order;
         $upHard->save();
         $downHard->save();

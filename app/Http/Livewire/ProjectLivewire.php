@@ -14,13 +14,23 @@ class ProjectLivewire extends Component
     use Actions;
 
     public $projects;
+
     public $project;
+
     public $projectId;
+
     public $name;
+
+    public $description;
+
     public $url;
+
     public $img;
+
     public $imgPath;
+
     public $order;
+
     public $lastOrder;
 
     protected $listeners = ['RemoveProject' => '$refresh'];
@@ -28,19 +38,20 @@ class ProjectLivewire extends Component
     protected $rules = [
         'name' => 'required|string',
         'url' => 'required|url',
-        'img' => 'required|file'
+        'img' => 'required|file',
     ];
 
     public function render()
     {
         $this->projects = Project::with(['file'])->orderBy('order')->get();
         $this->lastOrder = $this->projects?->last()?->order ?? 0;
+
         return view('livewire.project-livewire');
     }
 
     public function save(?int $id = null)
     {
-        if (!$id) {
+        if (! $id) {
             $this->project = new Project();
         } else {
             $this->project = Project::find($id);
@@ -53,19 +64,20 @@ class ProjectLivewire extends Component
             $this->project->file_id = FileUploadHelper::save($this->img);
         }
 
-        if(!$this->order){
+        if (! $this->order) {
             $lastOrder = $this->lastOrder;
-            $this->order = !$lastOrder ? 1 : $lastOrder +1;
+            $this->order = ! $lastOrder ? 1 : $lastOrder + 1;
         }
-        
+
         $this->project->name = $this->name;
+        $this->project->description = $this->description;
         $this->project->url = $this->url;
         $this->project->order = $this->order;
         $this->project->save();
 
         $this->notification()->success(
             'Projeto salvo',
-            'O projetp ' . $this->name . ' foi salvo com sucesso!'
+            'O projeto '.$this->name.' foi salvo com sucesso!'
         );
 
         $this->reset();
@@ -76,6 +88,7 @@ class ProjectLivewire extends Component
         $this->project = Project::find($id);
         $this->projectId = $id;
         $this->name = $this->project->name;
+        $this->description = $this->project->description;
         $this->url = $this->project->url;
         $this->order = $this->project->order;
         $this->imgPath = $this->project->file->path;
@@ -84,8 +97,8 @@ class ProjectLivewire extends Component
     public function upOrder(int $order)
     {
         $upHard = Project::where('order', $order)->first();
-        $downHard = Project::where('order', $order -1)->first();
-        $upHard->order = $order -1;
+        $downHard = Project::where('order', $order - 1)->first();
+        $upHard->order = $order - 1;
         $downHard->order = $order;
         $upHard->save();
         $downHard->save();
@@ -94,8 +107,8 @@ class ProjectLivewire extends Component
     public function downOrder(int $order)
     {
         $upHard = Project::where('order', $order)->first();
-        $downHard = Project::where('order', $order +1)->first();
-        $upHard->order = $order +1;
+        $downHard = Project::where('order', $order + 1)->first();
+        $upHard->order = $order + 1;
         $downHard->order = $order;
         $upHard->save();
         $downHard->save();
