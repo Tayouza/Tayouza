@@ -59,14 +59,15 @@
                     <h2 class="text-2xl text-zinc-900">Contato</h2>
                     <span><em class="text-sm text-zinc-600">(Agende uma conversa ou envie-me uma mensagem)</em></span>
                 </div>
-                <div class="flex flex-col gap-2 justify-evenly w-1/2">
+                <div class="flex flex-col gap-2 justify-evenly w-full p-2 sm:w-1/2">
                     <x-contact class="h-full text-justify"/>
                     <form action="" method="POST" class="flex flex-col gap-2 h-full w-full">
-                        <x-input placeholder="Nome"
+                        @csrf
+                        <x-input placeholder="Nome" name="name" type="text" required
                             class="bg-white !bg-opacity-90 focus:!bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700" />
-                        <x-input placeholder="Email"
+                        <x-input placeholder="Email" name="email" type="email" required
                             class="bg-white !bg-opacity-90 focus:!bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700" />
-                        <x-textarea placeholder="Mensagem"
+                        <x-textarea placeholder="Mensagem" name="contactMessage" required
                             class="bg-white !bg-opacity-90 focus:!bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 h-full" />
                         <input type="submit" value="Enviar"
                             class="!bg-opacity-90 cursor-pointer rounded text-white py-2 bg-zinc-800 hover:!bg-opacity-100">

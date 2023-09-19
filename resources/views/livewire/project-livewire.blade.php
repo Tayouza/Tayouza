@@ -5,7 +5,7 @@
     <form class="my-3 flex flex-col items-center gap-3 w-full" wire:submit.prevent="save({{$this->projectId}})">
         <div class="flex flex-col gap-2 w-full">
             <x-input wire:model.defer="name" label="Nome" placeholder="Nome do projeto" />
-            <x-textarea wire:model.defer="description" label="Descrição" placeholder="Descreva o porjeto aqui" />
+            <x-textarea wire:model.defer="description" label="Descrição" placeholder="Descreva o projeto aqui" />
             <x-input wire:model.defer="url" label="Url" placeholder="https://" />
             <div class="flex gap-4">
                 <div class="w-full">
