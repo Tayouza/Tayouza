@@ -1,22 +1,19 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Mail\ContactMail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('portfolio');
 })->name('portfolio');
+
+Route::post('/', function(Request $request) {
+    Mail::to(env('USER_EMAIL'))->send(new ContactMail($request));
+    return redirect('/');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
