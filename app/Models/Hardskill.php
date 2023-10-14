@@ -13,7 +13,7 @@ class Hardskill extends Model
 
     protected $fillable = [
         'name',
-        'icon',
+        'file_id',
         'level',
         'order',
     ];
