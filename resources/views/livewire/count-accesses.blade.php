@@ -11,7 +11,9 @@
                 <span class="text-zinc-900 dark:text-white text-sm">{{ $date }}</span>
                 <ul class="list-[circle] italic grid grid-cols-3">
                     @forelse ($groupAccess as $access)
-                        <li class="text-zinc-900 dark:text-zinc-400 text-xs">{{ $access->ip }}</li>
+                        <li class="text-zinc-900 dark:text-zinc-400 text-xs">
+                            <a href="https://www.google.com/maps/search/{{ $access->location['lat'] }},{{ $access->location['lon'] }}" target="_blank">{{ $access->ip }}</a>
+                        </li>
                     @empty
                         <span class="text-zinc-900 dark:text-white text-sm">Nenhum registro neste dia!</span>
                     @endforelse
