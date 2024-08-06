@@ -16,7 +16,7 @@
             <div class="bg-white dark:bg-zinc-800 p-4 shadow-sm w-full sm:rounded-lg">
                 <livewire:project-livewire />
             </div>
-            <div class="bg-white dark:bg-zinc-800 p-4 shadow-sm w-full sm:rounded-lg">
+            <div class="bg-white dark:bg-zinc-800 p-4 shadow-sm w-full sm:rounded-lg overflow-y-scroll max-h-[600px]">
                 <livewire:count-accesses />
             </div>
         </div>
