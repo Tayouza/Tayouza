@@ -17,9 +17,9 @@ Route::get('/', function (Request $request) {
 
     if ($allowSave) {
         AuditAccess::create([
-            'ip' => $request->ip(),
-            'browser' => browser(),
-            'user_agent' => str($request->userAgent())->limit(255),
+            'ip' => str($request->ip())->limit(),
+            'browser' => str(browser())->limit(),
+            'user_agent' => str($request->userAgent())->limit(),
             'access_at' => today()->format('Y-m-d'),
             'location' => geoip($request->ip())->toArray(),
         ]);
