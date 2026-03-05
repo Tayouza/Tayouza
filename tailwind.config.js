@@ -7,7 +7,8 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './vendor/wireui/wireui/resources/**/*.blade.php',
+        './vendor/wireui/wireui/src/Components/**/*.blade.php',
+        './vendor/wireui/wireui/src/Components/**/*.php',
         './vendor/wireui/wireui/ts/**/*.ts',
         './vendor/wireui/wireui/src/View/**/*.php'
     ],
@@ -29,8 +30,14 @@ module.exports = {
                     500: "#71717a",
                     600: "#52525b",
                     700: "#3f3f46",
-                    800: "#18181b",
-                }
+                    800: "#27272a",
+                    900: "#18181b",
+                    950: "#09090b",
+                },
+                background: {
+                    white: "#ffffff",
+                    dark: "#27272a",
+                },
             },
         },
     },
