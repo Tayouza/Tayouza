@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Hardskill;
 use LivewireUI\Modal\ModalComponent;
-use WireUi\Traits\Actions;
+use WireUi\Traits\WireUiActions;
 
 class RemoveHard extends ModalComponent
 {
-    use Actions;
+    use WireUiActions;
 
     public Hardskill $hard;
 
@@ -27,7 +27,7 @@ class RemoveHard extends ModalComponent
     public function delete()
     {
         $this->closeModal();
-        $this->emit('RemoveHard');
+        $this->dispatch('RemoveHard');
         $this->hard->delete();
         $this->notification()->success('Okay', 'Você deletou a hardskill '.$this->hard->name);
     }

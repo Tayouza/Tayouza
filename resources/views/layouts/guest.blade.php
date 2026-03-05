@@ -13,7 +13,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @wireUiScripts
+        <wireui:scripts />
         @darkTheme
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -33,6 +33,5 @@
                 {{ $slot }}
             </div>
         </div>
-        @livewire('livewire-ui-modal')
     </body>
 </html>

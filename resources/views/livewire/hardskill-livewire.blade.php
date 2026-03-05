@@ -4,11 +4,11 @@
     </h2>
     <form class="my-3 flex flex-col items-center gap-3 w-full" wire:submit.prevent="save({{$this->hardskillId}})">
         <div class="flex flex-col gap-2 w-full">
-            <x-input wire:model.defer="name" label="Nome" placeholder="Nome da skill" />
-            <x-inputs.number wire:model.defer="level" label="Nível" placeholder="1" min="1" max="8" />
+            <x-input wire:model="name" label="Nome" placeholder="Nome da skill" />
+            <x-number wire:model="level" label="Nível" placeholder="1" min="1" max="8" />
             <div class="flex gap-4">
                 <div class="w-full">
-                    <x-input type="file" wire:model.defer="icon" label="Ícone" accept="image/*" />
+                    <x-input type="file" wire:model="icon" label="Ícone" accept="image/*" />
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF.
                     </p>
                 </div>
@@ -51,7 +51,7 @@
                 <div class="flex gap-2">
                     <x-icons.edit class="w-4 fill-blue-500 cursor-pointer" wire:click="edit({{$hardskill->id}})" />
                     <x-icons.trash class="w-4 fill-red-500 cursor-pointer"
-                        wire:click="$emit('openModal', 'remove-hard', {{ json_encode(['id' => $hardskill->id]) }})" />
+                        wire:click="$dispatch('openModal', { component: 'remove-hard', arguments: {{ json_encode(['id' => $hardskill->id]) }} })" />
                     <div class="flex flex-col gap-1 w-4 items-center justify-center">
                         @if($this->hardskills->count() > 1)
                             @if ($hardskill->order !== 1 && $hardskill->order !== $this->lastOrder)

@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Helpers\FileUploadHelper;
 use App\Models\Project;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use WireUi\Traits\Actions;
+use WireUi\Traits\WireUiActions;
 
 class ProjectLivewire extends Component
 {
     use WithFileUploads;
-    use Actions;
+    use WireUiActions;
 
     public $projects;
 
@@ -33,14 +34,13 @@ class ProjectLivewire extends Component
 
     public $lastOrder;
 
-    protected $listeners = ['RemoveProject' => '$refresh'];
-
     protected $rules = [
         'name' => 'required|string',
         'url' => 'required|url',
         'img' => 'required|file',
     ];
 
+    #[On('RemoveProject')]
     public function render()
     {
         $this->projects = Project::with(['file'])->orderBy('order')->get();

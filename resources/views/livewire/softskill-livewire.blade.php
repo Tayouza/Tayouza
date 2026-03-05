@@ -4,7 +4,7 @@
     </h2>
     <form class="my-3 flex flex-col items-center gap-3 w-full" wire:submit.prevent="save({{$this->softskillId}})">
         <div class="flex flex-col gap-2 w-full">
-            <x-input wire:model.defer="name" label="Nome" placeholder="Nome da skill" />
+            <x-input wire:model="name" label="Nome" placeholder="Nome da skill" />
         </div>
         <div>
             <x-button type="submit" outline primary label="Salvar" />
@@ -22,7 +22,7 @@
                 <div class="flex gap-2">
                     <x-icons.edit class="w-4 fill-blue-500 cursor-pointer" wire:click="edit({{$softskill->id}})" />
                     <x-icons.trash class="w-4 fill-red-500 cursor-pointer"
-                        wire:click="$emit('openModal', 'remove-soft', {{ json_encode(['id' => $softskill->id]) }})" />
+                        wire:click="$dispatch('openModal', { component: 'remove-soft', arguments: {{ json_encode(['id' => $softskill->id]) }} })" />
                     <div class="flex flex-col gap-1 w-4 items-center justify-center">
                         @if($this->softskills->count() > 1)
                         @if ($softskill->order !== 1 && $softskill->order !== $this->lastOrder)

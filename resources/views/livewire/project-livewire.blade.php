@@ -4,12 +4,12 @@
     </h2>
     <form class="my-3 flex flex-col items-center gap-3 w-full" wire:submit.prevent="save({{$this->projectId}})">
         <div class="flex flex-col gap-2 w-full">
-            <x-input wire:model.defer="name" label="Nome" placeholder="Nome do projeto" />
-            <x-textarea wire:model.defer="description" label="Descrição" placeholder="Descreva o projeto aqui" />
-            <x-input wire:model.defer="url" label="Url" placeholder="https://" />
+            <x-input wire:model="name" label="Nome" placeholder="Nome do projeto" />
+            <x-textarea wire:model="description" label="Descrição" placeholder="Descreva o projeto aqui" />
+            <x-input wire:model="url" label="Url" placeholder="https://" />
             <div class="flex gap-4">
                 <div class="w-full">
-                    <x-input type="file" wire:model.defer="img" label="Ícone" accept="image/*" />
+                    <x-input type="file" wire:model="img" label="Ícone" accept="image/*" />
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF.
                     </p>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="flex gap-2">
                     <x-icons.edit class="w-4 fill-blue-500 cursor-pointer" wire:click="edit({{$project->id}})" />
                     <x-icons.trash class="w-4 fill-red-500 cursor-pointer"
-                        wire:click="$emit('openModal', 'remove-project', {{ json_encode(['id' => $project->id]) }})" />
+                        wire:click="$dispatch('openModal', { component: 'remove-project', arguments: {{ json_encode(['id' => $project->id]) }} })" />
                     <div class="flex flex-col gap-1 w-4 items-center justify-center">
                         @if($this->projects->count() > 1)
                         @if ($project->order !== 1 && $project->order !== $this->lastOrder)

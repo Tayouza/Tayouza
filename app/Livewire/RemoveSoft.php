@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Softskill;
 use LivewireUI\Modal\ModalComponent;
-use WireUi\Traits\Actions;
+use WireUi\Traits\WireUiActions;
 
 class RemoveSoft extends ModalComponent
 {
-    use Actions;
+    use WireUiActions;
 
     public Softskill $soft;
 
@@ -27,7 +27,7 @@ class RemoveSoft extends ModalComponent
     public function delete()
     {
         $this->closeModal();
-        $this->emit('RemoveSoft');
+        $this->dispatch('RemoveSoft');
         $this->soft->delete();
         $this->notification()->success('Okay', 'Você deletou a softskill '.$this->soft->name);
     }

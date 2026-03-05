@@ -12,13 +12,11 @@
     <meta name="theme-color" content="#fff">
     <!-- PWA  -->
     <meta name="theme-color" content="#efd166" />
-    <link rel="apple-touch-icon" href="/logo512.PNG">
+    <link rel="apple-touch-icon" href="/logo512.png">
     <link rel="manifest" href="/manifest.json">
     <!-- Scripts -->
-    @wireUiScripts
     @darkTheme
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
 </head>
 
 <body
@@ -63,12 +61,12 @@
                     <x-contact class="h-full text-justify"/>
                     <form action="" method="POST" class="flex flex-col gap-2 h-full w-full">
                         @csrf
-                        <x-input placeholder="Nome" name="name" type="text" required
-                            class="bg-white !bg-opacity-90 focus:!bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700" />
-                        <x-input placeholder="Email" name="email" type="email" required
-                            class="bg-white !bg-opacity-90 focus:!bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700" />
-                        <x-textarea placeholder="Mensagem" name="contactMessage" required
-                            class="bg-white !bg-opacity-90 focus:!bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 h-full" />
+                        <input placeholder="Nome" name="name" type="text" required
+                            class="w-full rounded-md border border-zinc-300 px-3 py-2 bg-white bg-opacity-90 focus:bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary-500" />
+                        <input placeholder="Email" name="email" type="email" required
+                            class="w-full rounded-md border border-zinc-300 px-3 py-2 bg-white bg-opacity-90 focus:bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary-500" />
+                        <textarea placeholder="Mensagem" name="contactMessage" required rows="4"
+                            class="w-full rounded-md border border-zinc-300 px-3 py-2 bg-white bg-opacity-90 focus:bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary-500 h-full"></textarea>
                         <input type="submit" value="Enviar"
                             class="!bg-opacity-90 cursor-pointer rounded text-white py-2 bg-zinc-800 hover:!bg-opacity-100">
                     </form>
@@ -76,11 +74,10 @@
             </div>
         </article>
         <article class="w-full flex justify-center items-center pb-4">
-            <span class="text-sm font-light text-zinc-800 dark:text-white">&copy;Tayouza, 2023</span>
+            <span class="text-sm font-light text-zinc-800 dark:text-white">&copy;Tayouza, {{ date('Y') }}</span>
         </article>
     </main>
-    @livewireScripts
-    @livewire('livewire-ui-modal')
+
     <script src="{{ asset('/sw.js') }}"></script>
     <script>
         if (!navigator.serviceWorker.controller) {

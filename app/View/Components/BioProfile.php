@@ -19,6 +19,6 @@ class BioProfile extends Component
     {
         $birthday = \Carbon\Carbon::createMidnightDate(1997, 6, 13, 'America/Sao_Paulo');
 
-        return view('components.bio-profile', ['year' => $birthday->diffInYears(now())]);
+        return view('components.bio-profile', ['year' => (int) $birthday->diffInYears(now())]);
     }
 }

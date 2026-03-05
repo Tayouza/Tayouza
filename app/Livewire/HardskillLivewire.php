@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Helpers\FileUploadHelper;
 use App\Models\Hardskill;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use WireUi\Traits\Actions;
+use WireUi\Traits\WireUiActions;
 
 class HardskillLivewire extends Component
 {
     use WithFileUploads;
-    use Actions;
+    use WireUiActions;
 
     public $name;
 
@@ -31,14 +32,13 @@ class HardskillLivewire extends Component
 
     public $lastOrder;
 
-    protected $listeners = ['RemoveHard' => '$refresh'];
-
     protected $rules = [
         'name' => 'required|alpha:ascii',
         'level' => 'required|integer|min:1|max:8',
         'icon' => 'required|image',
     ];
 
+    #[On('RemoveHard')]
     public function render()
     {
         $this->hardskills = Hardskill::with(['file'])->orderBy('order')->get();

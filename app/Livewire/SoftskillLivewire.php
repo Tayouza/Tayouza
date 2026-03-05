@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Softskill;
+use Livewire\Attributes\On;
 use Livewire\Component;
-use WireUi\Traits\Actions;
+use WireUi\Traits\WireUiActions;
 
 class SoftskillLivewire extends Component
 {
-    use Actions;
+    use WireUiActions;
 
     public $name = '';
 
@@ -22,12 +23,11 @@ class SoftskillLivewire extends Component
 
     public $lastOrder;
 
-    protected $listeners = ['RemoveSoft' => '$refresh'];
-
     protected $rules = [
         'name' => 'required|string',
     ];
 
+    #[On('RemoveSoft')]
     public function render()
     {
         $this->softskills = Softskill::orderBy('order')->get();
@@ -61,7 +61,6 @@ class SoftskillLivewire extends Component
         );
 
         $this->reset();
-        $this->emitSelf('$refresh');
     }
 
     public function edit(int $id)

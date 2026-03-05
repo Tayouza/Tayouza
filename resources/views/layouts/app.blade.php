@@ -13,10 +13,9 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @wireUiScripts
+        <wireui:scripts />
         @darkTheme
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @livewireStyles
     </head>
     <body class="antialiased relative min-h-screen bg-center bg-zinc-100 bg-dots-darker dark:bg-dots-lighter dark:bg-zinc-900 selection:bg-red-500 selection:text-white">
         <x-notifications z-index="z-50" />
@@ -37,7 +36,5 @@
                 {{ $slot }}
             </main>
         </div>
-        @livewireScripts
-        @livewire('livewire-ui-modal')
     </body>
 </html>

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Models\Project;
 use LivewireUI\Modal\ModalComponent;
-use WireUi\Traits\Actions;
+use WireUi\Traits\WireUiActions;
 
 class RemoveProject extends ModalComponent
 {
-    use Actions;
+    use WireUiActions;
 
     public Project $project;
 
@@ -27,7 +27,7 @@ class RemoveProject extends ModalComponent
     public function delete()
     {
         $this->closeModal();
-        $this->emit('RemoveProject');
+        $this->dispatch('RemoveProject');
         $this->project->delete();
         $this->notification()->success('Okay', 'Você deletou o projeto '.$this->project->name);
     }
