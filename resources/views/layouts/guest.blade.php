@@ -15,6 +15,7 @@
         <!-- Scripts -->
         <wireui:scripts />
         @darkTheme
+        @livewireScriptConfig
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-zinc-900 antialiased">

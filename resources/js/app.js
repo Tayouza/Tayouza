@@ -1,14 +1,14 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
-import focus from '@alpinejs/focus'
+import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+import focus from '@alpinejs/focus';
 import Chart from 'chart.js/auto';
 
 window.Chart = Chart;
+window.Alpine = Alpine;
 
 Alpine.plugin(focus)
-window.Alpine = Alpine;
-Alpine.start();
+Livewire.start();
 
 import.meta.glob([
     '../images/**',

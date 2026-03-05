@@ -15,6 +15,7 @@
         <!-- Scripts -->
         <wireui:scripts />
         @darkTheme
+        @livewireScriptConfig
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased relative min-h-screen bg-center bg-zinc-100 bg-dots-darker dark:bg-dots-lighter dark:bg-zinc-900 selection:bg-red-500 selection:text-white">

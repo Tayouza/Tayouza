@@ -27,7 +27,6 @@ class SoftskillLivewire extends Component
         'name' => 'required|string',
     ];
 
-    #[On('RemoveSoft')]
     public function render()
     {
         $this->softskills = Softskill::orderBy('order')->get();

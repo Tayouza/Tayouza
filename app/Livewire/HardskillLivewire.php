@@ -38,7 +38,6 @@ class HardskillLivewire extends Component
         'icon' => 'required|image',
     ];
 
-    #[On('RemoveHard')]
     public function render()
     {
         $this->hardskills = Hardskill::with(['file'])->orderBy('order')->get();
