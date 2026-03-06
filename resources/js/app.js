@@ -6,6 +6,7 @@ import Chart from 'chart.js/auto';
 
 window.Chart = Chart;
 window.Alpine = Alpine;
+window.Livewire = Livewire;
 
 Alpine.plugin(focus)
 Livewire.start();

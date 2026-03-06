@@ -8,8 +8,12 @@
   }
 }
 
-* {
+html {
   color: #121212;
+}
+
+.dark body {
+  color: #fff;
 }
 
 *::selection {
