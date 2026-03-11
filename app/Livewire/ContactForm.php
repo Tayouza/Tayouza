@@ -37,14 +37,14 @@ class ContactForm extends Component
     {
         $this->validate();
 
-        $request = request()->merge([
+        $data = [
             'name' => $this->name,
             'email' => $this->email,
             'contactMessage' => $this->contactMessage,
-        ]);
+        ];
 
-        Mail::to(config('mail.admin_email', env('USER_EMAIL')))
-            ->send(new ContactMail($request));
+        Mail::to(config('mail.to'))
+            ->send(new ContactMail($data));
 
         $this->reset(['name', 'email', 'contactMessage']);
 

@@ -3,8 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -17,7 +15,7 @@ class ContactMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private Request $request)
+    public function __construct(private array $data)
     {
     }
 
@@ -27,7 +25,8 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Mail',
+            subject: 'Contato via Portfólio — ' . $this->data['name'],
+            replyTo: [$this->data['email']],
         );
     }
 
@@ -39,9 +38,9 @@ class ContactMail extends Mailable
         return new Content(
             view: 'mails.contact-mail',
             with: [
-                'name' => $this->request->input('name'),
-                'email' => $this->request->input('email'),
-                'contactMessage' => htmlspecialchars($this->request->input('contactMessage')),
+                'name' => $this->data['name'],
+                'email' => $this->data['email'],
+                'contactMessage' => htmlspecialchars($this->data['contactMessage']),
             ]
         );
     }

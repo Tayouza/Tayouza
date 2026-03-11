@@ -102,6 +102,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'to' => env('MAIL_TO', 'hello@example.com'),
+
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings
