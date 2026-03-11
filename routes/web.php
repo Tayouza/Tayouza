@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Mail\ContactMail;
 use App\Models\AuditAccess;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (Request $request) {
@@ -27,11 +25,6 @@ Route::get('/', function (Request $request) {
 
     return view('portfolio');
 })->name('portfolio');
-
-Route::post('/', function(Request $request) {
-    Mail::to(env('USER_EMAIL'))->send(new ContactMail($request));
-    return redirect('/');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

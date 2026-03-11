@@ -1,7 +1,7 @@
 <x-skills title-box="Soft Skills">
     @foreach ($softskills as $softskill)
     <li>
-        <p class="text-lg">{{$softskill->name}}</p>
+        <span class="soft-chip">{{$softskill->name}}</span>
     </li>
     @endforeach
 </x-skills>

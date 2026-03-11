@@ -1,17 +1,12 @@
 @props([
   'points' => 0
 ])
-<div class="flex">
-  @for ($i = 0; $i < $points; $i++)
-    <div>
-      <div class="border border-black rounded-[50%] w-5 h-5 flex justify-center items-center">
-      <span class="ball-md glow"></span>
-      </div>
+@php
+  $percent = round(($points / 8) * 100);
+@endphp
+<div class="flex items-center gap-3 flex-1">
+    <div class="progress-bar-track flex-1">
+        <div class="progress-bar-fill" data-width="{{ $percent }}" style="width: 0%"></div>
     </div>
-  @endfor
-  @for ($i = 0; $i < (8 - $points); $i++)
-    <div>
-      <div class="border border-black rounded-[50%] w-5 h-5"></div>
-    </div>
-  @endfor
+    <span class="text-xs font-semibold text-zinc-500 dark:text-zinc-400 w-10 text-right">{{ $percent }}%</span>
 </div>

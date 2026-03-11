@@ -5,86 +5,135 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{Vite::asset('resources/images/favicon.ico')}}" type="image/x-icon">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} — Software Engineer</title>
     <meta name="description"
-        content="Olá, eu sou Taylor Canabarro de Souza, bem-vindo ao meu Portifólio. De pseudônimo Tayouza que é um acrônimo para o meu nome e segundo sobrenome.">
+        content="Portfólio de Taylor Canabarro de Souza, Software Engineer Full Stack. Especialista em PHP (Laravel), arquitetura de sistemas e soluções escaláveis.">
     <meta name="google-site-verification" content="Dns22gr7PBGvZ1d4cEN7c0CzvNZ033dJr59o6l_9xcE">
-    <meta name="theme-color" content="#fff">
-    <!-- PWA  -->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Taylor Canabarro de Souza — Software Engineer">
+    <meta property="og:description" content="Portfólio de Taylor Canabarro de Souza, Software Engineer Full Stack.">
+    <meta property="og:image" content="{{ Vite::asset('resources/images/profile.webp') }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Taylor Canabarro de Souza — Software Engineer">
+    <meta name="twitter:description" content="Portfólio de Software Engineer Full Stack.">
+    <meta name="twitter:image" content="{{ Vite::asset('resources/images/profile.webp') }}">
+
+    <!-- PWA -->
     <meta name="theme-color" content="#efd166" />
     <link rel="apple-touch-icon" href="/logo512.png">
     <link rel="manifest" href="/manifest.json">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "Person",
+        "name": "Taylor Canabarro de Souza",
+        "alternateName": "Tayouza",
+        "jobTitle": "Software Engineer",
+        "url": "{{ url('/') }}",
+        "sameAs": [
+            "https://www.linkedin.com/in/taylorcanabarro/",
+            "https://www.github.com/tayouza"
+        ]
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700,800&display=swap" rel="stylesheet" />
+
+    <!-- Preload profile image -->
+    <link rel="preload" as="image" href="{{ Vite::asset('resources/images/profile.webp') }}">
+
     <!-- Scripts -->
     @darkTheme
+    @livewireScriptConfig
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body
-    class="antialiased relative sm:flex sm:flex-col sm:items-center min-h-screen bg-center bg-zinc-100 bg-dots-darker dark:bg-dots-lighter dark:bg-zinc-900 selection:bg-red-500 selection:text-white">
-    @if (Route::has('login'))
-    <x-button-change-theme />
-    <div class="fixed -top-1 right-8 p-6 text-right">
-        @auth
-        <a href="{{ url('/dashboard') }}"
-            class="font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 opacity-[0.01]">Dashboard</a>
-        @else
-        <a href="{{ route('login') }}"
-            class="font-semibold text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 opacity-[0.01]">Log
-            in</a>
-        @endauth
-    </div>
-    @endif
+    class="antialiased relative min-h-screen bg-center bg-zinc-100 bg-dots-darker dark:bg-dots-lighter dark:bg-zinc-900 selection:bg-amber-500 selection:text-white">
 
-    <x-logo class="fixed top-4 left-4 text-zinc-900 dark:text-white" />
+    {{-- Navbar --}}
+    <x-navbar />
 
-    <header class="container flex flex-col items-center gap-4 mt-28">
-        <x-img-profile />
-        <x-bio-profile />
-        <x-social-medias />
-
+    {{-- Hero Section --}}
+    <header id="hero" class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center gap-8 sm:gap-12 pt-28 sm:pt-36 pb-12 px-4 sm:px-6">
+        <div class="reveal-scale">
+            <x-img-profile />
+        </div>
+        <div class="flex flex-col items-center sm:items-start gap-4 reveal-right">
+            <x-bio-profile />
+            <x-social-medias />
+        </div>
     </header>
-    <main class="w-full flex flex-col items-center gap-4 mt-28">
-        <article class="w-full bg-primary-100 flex flex-col xl:flex-row gap-12 justify-center items-center py-12 px-6">
-            <x-my-hard-skills />
-            <x-my-soft-skills />
+
+    <main class="w-full flex flex-col items-center">
+        {{-- About Me --}}
+        <article class="w-full py-8">
+            <x-about-me />
         </article>
-        <article class="w-full">
-            <x-projects />
+
+        {{-- Experience Timeline --}}
+        <article class="w-full bg-zinc-50 dark:bg-zinc-800/50 py-8">
+            <x-timeline />
         </article>
-        <article class="py-4 pb-8 w-full flex justify-center items-center bg-primary-100">
-            <div class="w-full flex flex-col justify-center items-center text-center">
-                <div class="pt-5 pb-4">
-                    <h2 class="text-2xl text-zinc-900">Contato</h2>
-                    <span><em class="text-sm text-zinc-600">(Agende uma conversa ou envie-me uma mensagem)</em></span>
+
+        {{-- Skills --}}
+        <article id="skills" class="w-full py-12 px-4">
+            <div class="text-center mb-8 reveal">
+                <h2 class="section-heading">Skills</h2>
+                <p class="section-subheading">Minhas competências técnicas e interpessoais</p>
+            </div>
+            <div class="max-w-6xl mx-auto flex flex-col xl:flex-row gap-8 justify-center items-stretch">
+                <div class="reveal-left flex-1">
+                    <x-my-hard-skills />
                 </div>
-                <div class="flex flex-col gap-2 justify-evenly w-full p-2 sm:w-1/2">
-                    <x-contact class="h-full text-justify"/>
-                    <form action="" method="POST" class="flex flex-col gap-2 h-full w-full">
-                        @csrf
-                        <input placeholder="Nome" name="name" type="text" required
-                            class="w-full rounded-md border border-zinc-300 px-3 py-2 bg-white bg-opacity-90 focus:bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary-500" />
-                        <input placeholder="Email" name="email" type="email" required
-                            class="w-full rounded-md border border-zinc-300 px-3 py-2 bg-white bg-opacity-90 focus:bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary-500" />
-                        <textarea placeholder="Mensagem" name="contactMessage" required rows="4"
-                            class="w-full rounded-md border border-zinc-300 px-3 py-2 bg-white bg-opacity-90 focus:bg-opacity-100 text-zinc-700 dark:bg-zinc-100 dark:border-zinc-200 dark:text-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary-500 h-full"></textarea>
-                        <input type="submit" value="Enviar"
-                            class="!bg-opacity-90 cursor-pointer rounded text-white py-2 bg-zinc-800 hover:!bg-opacity-100">
-                    </form>
+                <div class="reveal-right flex-1">
+                    <x-my-soft-skills />
                 </div>
             </div>
         </article>
-        <article class="w-full flex justify-center items-center pb-4">
-            <span class="text-sm font-light text-zinc-800 dark:text-white">&copy;Tayouza, {{ date('Y') }}</span>
+
+        {{-- Projects --}}
+        <article class="w-full bg-zinc-50 dark:bg-zinc-800/50 py-8">
+            <x-projects />
         </article>
+
+        {{-- Contact --}}
+        <article id="contato" class="w-full py-12 px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-8 reveal">
+                    <h2 class="section-heading">Contato</h2>
+                    <p class="section-subheading">Agende uma conversa ou envie-me uma mensagem</p>
+                </div>
+                <div class="flex flex-col gap-4 reveal">
+                    <x-contact class="text-center" />
+                    <livewire:contact-form />
+                </div>
+            </div>
+        </article>
+
+        {{-- Footer --}}
+        <footer class="w-full py-6 text-center border-t border-zinc-200 dark:border-zinc-700">
+            <span class="text-sm font-light text-zinc-500 dark:text-zinc-400">&copy; Tayouza, {{ date('Y') }}</span>
+        </footer>
     </main>
 
     <script src="{{ asset('/sw.js') }}"></script>
     <script>
         if (!navigator.serviceWorker.controller) {
             navigator.serviceWorker.register("/sw.js").then(function (reg) {
-            console.log("Service worker has been registered for scope: " + reg.scope);
-        });
-    }
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
     </script>
 </body>
 
